@@ -9,11 +9,13 @@ t = int(input())
 for i in range(t):
     n = int(input())
     cnt_tb = [[0 for _ in range(10)] for _ in range(10)]
+    # [[0]*10 for _ in range(10)]
     cnt = 0
 
     for _ in range(n):
         nums = list(map(int, input().split()))
         x1, y1, x2, y2, color = nums[0], nums[1], nums[2], nums[3], nums[4]
+        # x1, y1, x2, y2, color = map(int, input().split())
         inc = 1 if color == 1 else 10
 
         for x in range(x1, x2+1):

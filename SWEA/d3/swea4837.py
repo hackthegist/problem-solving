@@ -1,5 +1,8 @@
 '''
 4837. [파이썬 S/W 문제해결 기본] 2일차 - 부분집합의 합 
+1) 부분집합 전체를 구한 후, (binary counting)
+2) 합 필터링,
+3) 부분집합 개수 필터링,
 '''
 
 import sys
@@ -32,6 +35,7 @@ for i in range(t):
         for j in range(12):
             if l & (1 << j):
                 new.append(a[j])
+
         if get_len(new) == n and get_sum(new) == k:
             cnt += 1
         new = []
