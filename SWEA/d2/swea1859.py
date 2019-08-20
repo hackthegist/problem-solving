@@ -2,38 +2,47 @@
 1859. 백만 장자 프로젝트
 '''
 import sys
-sys.stdin = open("../inputs/1859_in.txt", "r")
+sys.stdin = open("SWEA/inputs/1859_in.txt", "r")
 
+# 1
+# t = int(input())
+# answer = ""
+# for i in range(t):
+#     n = int(input())
+#     price = list(map(int, input().split()))
+#     result = 0
 
-def get_max_idx(arr):
-    m_i = mx = 0
-    for i, v in enumerate(arr):
-        m_i = i if mx < v else m_i
-    return m_i
+#     while len(price) > 0:
+#         mx = max(price)
+#         mx_i = price.index(mx)
 
+#         if mx_i == 0:
+#             del price[0]
+#             continue
 
-def get_diff(arr, m_i):
-    s = 0
-    for v in arr:
-        s += arr[m_i] - v
-    return s
+#         for num in price[:mx_i+1]:
+#             result += mx - num
+#         price = price[mx_i+1:]
 
+#     answer += "#{} {}\n".format(i+1, result)
 
-def get_margin(arr):
-    m_i = get_max_idx(arr)
-    if m_i == 0:
-        return 0
-    return get_diff(arr[:m_i+1], m_i)
+# print(answer)
+# print("#{} {}".format(i+1, result))
 
+# 2 뒤에서부터 탐색
 
 t = int(input())
+answer = ""
 for i in range(t):
     n = int(input())
     price = list(map(int, input().split()))
     result = 0
-
-    while len(arr) > 0:
-        result += get_margin(price)
-        price = price[get_max_idx(price)+1:]
-
-    print("#{} {}".format(i+1, result))
+    mx = price[-1]
+    # print(len(test_case))
+    for j in range(len(price)-1, -1, -1):
+        if mx <= price[j]:
+            mx = price[j]
+        else:
+            result += mx-price[j]
+    answer += "#{} {}\n".format(i+1, result)
+print(answer)
