@@ -7,6 +7,35 @@
 
 ## used snippet
 
+- only one print version
+
+```python
+"swea": {
+    "prefix": "swea",
+    "body": [
+      "'''",
+      "problem_description",
+      "'''",
+      "",
+      "import sys",
+      "sys.stdin = open(\"SWEA/inputs/${TM_FILENAME/[\\D]//gi}_in.txt\", \"r\")",
+      "",
+      "t = int(input())",
+      "ans = \"\"",
+      "",
+      "for i in range(1, t+1):",
+      "    n = int(input())",
+      "    nums = list(map(int, input().split()))",
+      "",
+      "    ans += \"#{} {}\\n\".format(i, result)",
+      "",
+      "print(ans)"
+    ],
+    "description": "swea ps starting snippet"
+  }
+}
+```
+
 ```python
  "swea": {
     "prefix": "swea",

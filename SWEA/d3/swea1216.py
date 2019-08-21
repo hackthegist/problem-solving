@@ -131,3 +131,5 @@ for i in range(t):
                         mx = ln
 
     print("#{} {}".format(i+1, mx))
+
+# 5 큰 수부터 줄어들며 찾기
