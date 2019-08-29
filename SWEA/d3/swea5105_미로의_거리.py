@@ -1,26 +1,17 @@
 '''
-4875. [파이썬 S/W 문제해결 기본] 5일차 - 미로
+5105. [파이썬 S/W 문제해결 기본] 6일차 - 미로의 거리
 '''
-
-import sys
-sys.stdin = open("SWEA/inputs/4875_in.txt", "r")
-
-
 
 import sys
 sys.stdin = open("SWEA/inputs/5105_in.txt", "r")
 
-def dfs(g, n, s):
-    stack = []
-    visited = [[0] * (n+1) for _ in range(n+)
+def bfs(g, n, s):
+    q = []
     moves = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-    stack.append(s)
+    q.append(s)
+    cnt = 0
 
-    while stack:
-        pop_ = stack.pop()
-        if not visited[pop_[0]][pop_[1]]:
-            visited[pop_[0]][pop_[1] = 1
-        
+    while q:
         nq = len(q)
         cnt += 1
         for _ in range(nq):
@@ -57,7 +48,7 @@ for tc in range(1, t+1):
             x = i
     y = bg[x].index("2")
 
-    res = dfs(bg, n, [x,y])
+    res = bfs(bg, n, [x,y])
 
     ans += "#{} {}\n".format(tc, res)
 
