@@ -12,14 +12,22 @@ sys.stdin = open("SWEA/inputs/5105_in.txt", "r")
 
 def dfs(g, n, s):
     stack = []
-    visited = [[0] * (n+1) for _ in range(n+)
     moves = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     stack.append(s)
 
     while stack:
         pop_ = stack.pop()
-        if not visited[pop_[0]][pop_[1]]:
-            visited[pop_[0]][pop_[1] = 1
+        if g[pop_[0]][pop_[1]] == "0":
+            g[pop_[0]][pop_[1]] = "1"
+        for x, y in moves:
+            x += pop_[0]
+            y += pop_[1]
+            if g[x][y] == "0":
+            if g[x][y] == "0":
+                stack.append([x, y])
+
+
+            
         
         nq = len(q)
         cnt += 1
