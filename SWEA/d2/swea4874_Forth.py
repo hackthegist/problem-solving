@@ -36,7 +36,7 @@ for i in range(1, t+1):
             stack.append(v)
     else:
         if len(stack) == 1:
-            result = stack.pop() 
+            result = stack.pop()
         else:
             result = "error"
     ans += "#{} {}\n".format(i, result)
