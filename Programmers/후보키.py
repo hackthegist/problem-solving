@@ -1,6 +1,8 @@
 '''
 (2018년)KAKAO BLIND RECRUITMENT 후보키
 
+입출력 예
+
 relation	                        result
 [["100","ryan","music","2"],
  ["200","apeach","math","2"],
