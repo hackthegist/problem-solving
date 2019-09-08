@@ -2,9 +2,6 @@
 4875. [파이썬 S/W 문제해결 기본] 5일차 - 미로
 '''
 
-import sys
-sys.stdin = open("SWEA/inputs/4875_in.txt", "r")
-
 
 
 import sys

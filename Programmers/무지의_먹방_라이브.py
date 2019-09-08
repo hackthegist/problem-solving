@@ -1,49 +1,45 @@
 '''
 (2018년) KAKAO BLIND RECRUITMENT 무지의 먹방 라이브
 
+입출력 예
+
 food_times	k	result
 [3, 1, 2]	5	1
 '''
 
-food_times = [1, 2, 0, 3, 5, 6]
-k = 20
-
+food_times = [100, 20, 0, 31, 591, 6]
+k = 200
 
 def solution(food_times, k):
 
-    fc = len(food_times)
-    ft = food_times
+    ft, fc = food_times, len(food_times)
+    pos = fc
 
     if sum(ft) <= k:
         return -1
+    
+    while k > pos:
+        pos = fc
+        for i in range(fc):
+            if ft[i] == 0:
+                pos -= 1
+        dvd = k // pos
+        for i in range(fc):
+            if ft[i] > 0:
+                ft[i] -= dvd
 
-    while k > 0:
+        k -= dvd * pos
+    
+        for i in range(fc):
+            if ft[i] < 0:
+                k -= ft[i]
+                ft[i] = 0
+                pos -= 1
 
-        dvd = k // fc
-        ft = list(map(lambda x: x - dvd, ft))
-        k - dvd * fc
-
-        mn = min(ft)
-
-        if k > mn * fc:
-            ft = list(map(lambda x: x - mn, ft))
-            k -= mn * fc
-            for _ in range(ft.count(0)):
-                ft.pop(ft.index(0))
-
-        elif k == mn * fc:
-            ft = list(map(lambda x: x - mn, ft))
-            k -= mn * fc
-            for _ in range(ft.count(0)):
-                ft.pop(ft.index(0))
-            return 1
-
-        else:
-            break
 
     j = 0
     while k != -2:
-        if ft[j]:
+        if ft[j] > 0:
             ft[j] -= 1
             k -= 1
             if k == -1:
@@ -53,16 +49,4 @@ def solution(food_times, k):
             j = (j + 1) % len(ft)
 
 
-    # i = 0
-    # while i < k:
-    #     if food_times[i % fd_cnt]:
-    #         food_times[i % fd_cnt] -= 1
-    #         i += 1
-    #     else:
-    #         if stop - k > fd_cnt:
-    #             return -1
-    #         i += 1
-    #         stop += 1
-    # answer = (i + 1) % k
-    # return answer
 print(solution(food_times, k))
