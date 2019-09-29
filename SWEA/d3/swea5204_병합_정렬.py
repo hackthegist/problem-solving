@@ -33,11 +33,11 @@ def merge(left, right):
                 res.append(right[j])
                 j += 1
         elif j < len(right):
-            res.append(right[j])
-            j += 1
+            res += right[j:]
+            j = len(right)
         elif i < len(left):
-            res.append(left[i])
-            i += 1
+            res += left[i:]
+            i = len(left)
             result += 1
     return res
 
