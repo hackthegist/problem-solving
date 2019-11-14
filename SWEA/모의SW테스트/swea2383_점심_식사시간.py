@@ -18,48 +18,58 @@ for tc in range(1, int(input())+1):
                 stairs.append([i, j, room[i][j]])
            
     p_in_stairs = [[] for _ in range(len(stairs))]
+    dists = []
 
     for i in range(n):
         for j in range(n):
             if room[i][j] == 1:
-                mn = 1000
-                mn_idx = None
-                for k in range(len(stairs)):
-                    dist = abs(i - stairs[k][0]) + abs(j - stairs[k][1])
-                    if dist < mn:
-                        mn_idx = k
-                        mn = dist
-                    elif dist == mn:
-                        if stairs[mn_idx][2] > stairs[k][2]:
-                            mn_idx = k
-                p_in_stairs[mn_idx].append(mn)
-
+                dists.append([abs(i - stairs[k][0]) + abs(j - stairs[k][1]) + 1 + stairs[k][2] for k in range(2)])
+                # p_in_stairs[mn_idx].append(mn)
+    print(dists)
+    for dist in dists:
+        if dist[0] < dist[1]:
+            p_in_stairs[0].append(dist)
+        else:
+            p_in_stairs[1].append(dist)
+    
     p_in_stairs = list(map(sorted, p_in_stairs))
+    all_p = []
+    if len(p_in_stairs[0]) > 3:
+        all_p.append()
+        for l in range(3, len(p_in_stairs[0])):
+            if p_in_stairs[0][l][0] + stairs[0][2] > p_in_stairs[0][l][1]:
+                p_in_stairs[1].append(p_in_stairs[0].pop(l))
+            else:
+                p_in_stairs[0][l][0] += stairs[0][2]
+    
+            
     print(p_in_stairs)
+#     p_in_stairs = list(map(sorted, p_in_stairs))
+#     print(p_in_stairs)
 
-    mx_t = 0
-    for j in range(len(p_in_stairs)):
-        waiting = p_in_stairs[j]
-        t = 1 + waiting[0]
-        down = []
-        v = stairs[j][2]
-        for i in range(len(waiting)):
-            waiting[i] == t-1:
-            down.append(v)
+#     mx_t = 0
+#     for j in range(len(p_in_stairs)):
+#         waiting = p_in_stairs[j]
+#         t = 1 + waiting[0]
+#         down = []
+#         v = stairs[j][2]
+#         for i in range(len(waiting)):
+#             waiting[i] == t-1:
+#             down.append(v)
 
-        while :
-            for k in range(len(down)):
-                down[k] -= 1
-            while waiting and waiting[0] == 0:
-                waiting.pop(0)
-                down.append(v)
+#         while :
+#             for k in range(len(down)):
+#                 down[k] -= 1
+#             while waiting and waiting[0] == 0:
+#                 waiting.pop(0)
+#                 down.append(v)
 
             
 
 
 
-    mx_t = t if mx_t < t else mx_t    
-print(mx_t)
+#     mx_t = t if mx_t < t else mx_t    
+# print(mx_t)
 
 
 
